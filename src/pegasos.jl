@@ -3,8 +3,8 @@
 # p: # of features
 # n: # of data points
 # k: size of minibatch
-function pegasos{T<:Real}(X::AbstractMatrix{T},
-                          Y::AbstractVector{T};
+function pegasos(X::AbstractMatrix,
+                          Y::AbstractVector;
                           k::Integer = 5,
                           lambda::Real = 0.1,
                           maxpasses::Integer = 100)
@@ -20,8 +20,8 @@ function pegasos{T<:Real}(X::AbstractMatrix{T},
     end
 
     # Allocate storage for repeated used arrays
-    deltaw = Array{Float64,1}(p)
-    w_tmp = Array{Float64,1}(p)
+    deltaw = Array{Float64}(undef, p)
+    w_tmp = Array{Float64}(undef, p)
 
     # Loop
     for t in 1:maxpasses

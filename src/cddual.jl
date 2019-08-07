@@ -1,8 +1,8 @@
 # Randomization option slows down processing
 # but improves quality of solution considerably
 # Would be better to do randomization in place
-function cddual{T<:Real}(X::AbstractMatrix{T},
-                         Y::AbstractVector{T};
+function cddual(X::AbstractMatrix,
+                         Y::AbstractVector;
                          C::Real = 1.0,
                          norm::Integer = 2,
                          randomized::Bool = true,
