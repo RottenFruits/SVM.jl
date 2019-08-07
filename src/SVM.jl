@@ -31,6 +31,11 @@ function predict(fit::SVMFit, X::AbstractMatrix)
     return preds
 end
 
+function predict(fit::SVMFit, X::Array)
+    preds = sign(fit.w' * X)
+    return preds
+end
+
 include("pegasos.jl")
 include("cddual.jl")
 
