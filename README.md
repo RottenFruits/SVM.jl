@@ -32,10 +32,8 @@ using Random
 iris = dataset("datasets", "iris")
 
 # SVM format expects observations in columns and features in rows
-#X = array(iris[:, 1:4])'
-p, n = size(X)
-
 X = convert(Array, iris[:, 1:4])'
+p, n = size(X)
 
 # SVM format expects positive and negative examples to +1/-1
 y = [species == "setosa" ? 1.0 : -1.0 for species in iris[:Species]]
@@ -47,7 +45,7 @@ train = bitrand(n)
 model = svm(X[:,train], y[train])
 
 # And now evaluate that model on the testset
-accuracy = sum(predict(model, X[:, .!train]) .== Y[.!train])/sum(.!train)
+accuracy = sum(predict(model, X[:, .!train]) .== y[.!train])/sum(.!train)
 ```
 
 You may specify non-default values for the various parameters:
